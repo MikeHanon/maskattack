@@ -68,7 +68,25 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                                <p>
+                                    <i class="fas fa-fw fa-sign-out-alt nav-icon">
+
+                                    </i>
+                                <p>{{ trans('global.logout') }}</p>
+
+                            </a>
+                        </li>
+                        <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <button type="submit">logout</button>
+                            {{ csrf_field() }}
+                        </form>
+{{--                        menu quand autentifier--}}
+                    @can('acces_admin')
+                        <a href="{{ url('/admin') }}">admin</a>
+                    @endcan
+                        test
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
