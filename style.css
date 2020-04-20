@@ -1,0 +1,24 @@
+body{
+    margin: auto;
+    text-align: center;
+    background-color: #142740;
+}
+.Mask{
+    position: relative;
+    display: inline-block;
+}
+.Text{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 48px;
+    color: #8D1A2F;
+    text-shadow: 4px 4px 4px rgba(255, 98, 98, 0.69);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
