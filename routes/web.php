@@ -72,6 +72,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('comments/destroy', 'CommentController@massDestroy')->name('comments.massDestroy');
     Route::resource('comments', 'CommentController');
 
+    // Meta Users
+    Route::delete('meta-users/destroy', 'MetaUserController@massDestroy')->name('meta-users.massDestroy');
+    Route::resource('meta-users', 'MetaUserController');
+
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
@@ -81,3 +85,6 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
     }
 
 });
+Route::post('/cart-add', 'CartController@add')->name('cart.add');
+Route::get('/cart-checkout', 'CartController@cart')->name('cart.checkout');
+Route::post('/cart-clear', 'CartController@clear')->name('cart.clear');

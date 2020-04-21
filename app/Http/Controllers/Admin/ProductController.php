@@ -12,6 +12,7 @@ use App\ProductCategory;
 use App\ProductTag;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -42,6 +43,9 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        $userId = Auth::user()->id;
+       $data = $request->request->add(['user_id' => $userId]);
+
         $product = Product::create($request->all());
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
