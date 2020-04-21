@@ -6,7 +6,8 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        you are logged in
+                        hello world
+
                     </div>
                 </div>
             </div>
