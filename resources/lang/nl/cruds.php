@@ -123,6 +123,8 @@ return [
             'description_helper' => '',
             'price'              => 'Price',
             'price_helper'       => '',
+            'quantity'              => 'Antaal',
+            'quantity_helper'    => '',
             'category'           => 'Categories',
             'category_helper'    => '',
             'tag'                => 'Tags',

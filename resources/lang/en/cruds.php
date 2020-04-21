@@ -122,6 +122,8 @@ return [
             'description'        => 'Description',
             'description_helper' => '',
             'price'              => 'Price',
+            'quantity'              => 'Quantity',
+            'quantity_helper'    => '',
             'price_helper'       => '',
             'category'           => 'Categories',
             'category_helper'    => '',

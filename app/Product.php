@@ -28,6 +28,7 @@ class Product extends Model implements HasMedia
     protected $fillable = [
         'name',
         'price',
+        'quantity',
         'created_at',
         'updated_at',
         'deleted_at',

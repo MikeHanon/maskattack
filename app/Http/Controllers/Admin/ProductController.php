@@ -34,6 +34,7 @@ class ProductController extends Controller
 
         $categories = ProductCategory::all()->pluck('name', 'id');
 
+
         $tags = ProductTag::all()->pluck('name', 'id');
 
         return view('admin.products.create', compact('categories', 'tags'));
