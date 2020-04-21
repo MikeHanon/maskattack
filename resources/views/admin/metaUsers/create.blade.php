@@ -9,14 +9,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.meta-users.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label for="user">{{ trans('cruds.metaUser.fields.user') }}</label>
-                <input class="form-control {{ $errors->has('user') ? 'is-invalid' : '' }}" type="number" name="user" id="user" value="{{ old('user', '') }}" step="1">
-                @if($errors->has('user'))
-                    <span class="text-danger">{{ $errors->first('user') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.metaUser.fields.user_helper') }}</span>
-            </div>
+
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.metaUser.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>

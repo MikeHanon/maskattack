@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateMetaUserRequest;
 use App\MetaUser;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class MetaUserController extends Controller
@@ -31,6 +32,8 @@ class MetaUserController extends Controller
 
     public function store(StoreMetaUserRequest $request)
     {
+        $userId= Auth::user()->id;
+        $data = $request->request->add(['user' => $userId]);
         $metaUser = MetaUser::create($request->all());
 
         return redirect()->route('admin.meta-users.index');

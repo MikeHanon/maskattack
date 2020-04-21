@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\MetaUser;
 use App\Role;
 use App\User;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class UsersController extends Controller
@@ -36,6 +38,7 @@ class UsersController extends Controller
     {
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
+
 
         return redirect()->route('admin.users.index');
 
@@ -67,7 +70,10 @@ class UsersController extends Controller
 
         $user->load('roles');
 
+
         return view('admin.users.show', compact('user'));
+
+
     }
 
     public function destroy(User $user)
