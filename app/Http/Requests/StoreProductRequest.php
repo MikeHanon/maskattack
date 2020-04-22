@@ -20,10 +20,14 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
+
             'name'         => [
                 'required'],
             'price'        => [
                 'required'],
+            'quantity'     => [
+              'required'
+            ],
             'categories.*' => [
                 'integer'],
             'categories'   => [

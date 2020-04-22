@@ -18,6 +18,22 @@
                 <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="First_name">{{ trans('cruds.user.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="First_name" id="First_name" value="{{ old('First_name', '') }}" required>
+                @if($errors->has('First_name'))
+                    <span class="text-danger">{{ $errors->first('First_name') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="Last_name">{{ trans('cruds.user.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('Last_name') ? 'is-invalid' : '' }}" type="text" name="Last_name" id="Last_name" value="{{ old('Last_name', '') }}" required>
+                @if($errors->has('Last_name'))
+                    <span class="text-danger">{{ $errors->first('Last_name') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="email">{{ trans('cruds.user.fields.email') }}</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email') }}" required>
                 @if($errors->has('email'))

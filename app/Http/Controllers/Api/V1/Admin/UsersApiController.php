@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\Admin\UserResource;
+use App\MetaUser;
 use App\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ class UsersApiController extends Controller
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->all());
+        $insertedId = $user->id;
         $user->roles()->sync($request->input('roles', []));
+        MetaUser::create(['user_id'=>$insertedId,'First_name'=>$request->First_name, 'Last_name'=>$request->Last_name]);
 
         return (new UserResource($user))
             ->response()

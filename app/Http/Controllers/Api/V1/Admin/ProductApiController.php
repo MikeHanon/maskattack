@@ -10,6 +10,7 @@ use App\Http\Resources\Admin\ProductResource;
 use App\Product;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductApiController extends Controller
@@ -26,6 +27,8 @@ class ProductApiController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        $userId = Auth::user()->id;
+        $data = $request->request->add(['user_id' => $userId]);
         $product = Product::create($request->all());
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));

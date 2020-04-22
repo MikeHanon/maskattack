@@ -10,9 +10,11 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('name')->nullable();
             $table->longText('description')->nullable();
             $table->decimal('price', 15, 2)->nullable();
+            $table->integer('quantity');
             $table->timestamps();
             $table->softDeletes();
         });
