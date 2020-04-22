@@ -61,8 +61,11 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
+        $user = User::create($request->all());
+        $insertedId = $user->id;
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
+        MetaUser::updateOrCreate(['user_id'=>$insertedId,'First_name'=>$request->First_name, 'Last_name'=>$request->Last_name]);
 
         return redirect()->route('admin.users.index');
 
@@ -73,7 +76,7 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user->load('roles');
-
+        $user->load('metaUser');
 
         return view('admin.users.show', compact('user'));
 

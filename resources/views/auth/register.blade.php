@@ -23,6 +23,7 @@
                             </div>
                         @endif
                     </div>
+
                     <div class="form-group">
                         <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
                         @if($errors->has('email'))
