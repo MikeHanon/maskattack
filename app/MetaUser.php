@@ -19,8 +19,9 @@ class MetaUser extends Model
     ];
 
     protected $fillable = [
-        'user',
-        'name',
+        'user_id',
+        'First_name',
+        'Last_name',
         'adresse',
         'acount_nbr',
         'phone_number',
@@ -34,5 +35,10 @@ class MetaUser extends Model
     {
         return $date->format('Y-m-d H:i:s');
 
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

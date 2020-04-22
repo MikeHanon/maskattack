@@ -26,10 +26,13 @@
                             {{ trans('cruds.metaUser.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.metaUser.fields.user') }}
+                            {{ trans('cruds.metaUser.fields.user_id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.metaUser.fields.name') }}
+                            {{ trans('cruds.metaUser.fields.First_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.metaUser.fields.Last_name') }}
                         </th>
                         <th>
                             {{ trans('cruds.metaUser.fields.adresse') }}
@@ -67,10 +70,13 @@
                                 {{ $metaUser->id ?? '' }}
                             </td>
                             <td>
-                                {{ $metaUser->user ?? '' }}
+                                {{ $metaUser->user_id ?? '' }}
                             </td>
                             <td>
-                                {{ $metaUser->name ?? '' }}
+                                {{ $metaUser->First_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $metaUser->Last_name ?? '' }}
                             </td>
                             <td>
                                 {{ $metaUser->adresse ?? '' }}

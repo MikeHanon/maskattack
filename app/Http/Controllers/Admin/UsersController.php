@@ -36,8 +36,12 @@ class UsersController extends Controller
 
     public function store(StoreUserRequest $request)
     {
+
         $user = User::create($request->all());
+        $insertedId = $user->id;
+
         $user->roles()->sync($request->input('roles', []));
+        MetaUser::create(['user_id'=>$insertedId,'First_name'=>$request->First_name, 'Last_name'=>$request->Last_name]);
 
 
         return redirect()->route('admin.users.index');

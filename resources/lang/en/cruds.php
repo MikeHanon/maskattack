@@ -269,9 +269,10 @@ return [
         'fields'         => [
             'id'                  => 'ID',
             'id_helper'           => '',
-            'user'                => 'User',
+            'user_id'                => 'User_id',
             'user_helper'         => '',
-            'name'                => 'Name',
+            'First_name'                => 'First Name',
+            'Last_name'                => 'Last Name',
             'name_helper'         => '',
             'adresse'             => 'Adresse',
             'adresse_helper'      => '',
