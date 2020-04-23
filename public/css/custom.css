@@ -85,9 +85,52 @@ table.dataTable thead .sorting_desc {
     color: #FAFAFA;
     font-size: 40px;
     line-height: 48px;
-    
+
 }
 .LoginBox{
     background: #142740;
     border-radius: 32px;
+}
+.LoginInput{
+    background-color: #FFFFFF;
+    color: #8D1A2F;
+    font-family: PoetsenOne;
+    border: 3px solid #C9DFF2;
+    border-radius: 6px;
+    margin: auto;
+}
+.LoginInput::placeholder{
+    color: #8D1A2F;
+    font-family: PoetsenOne;
+    font-size: 18px;
+    line-height: 22px;
+}
+.Input{
+    text-align: center;
+    margin-bottom: 16px;
+}
+.RememberMe{
+    color: white;
+    text-align: center;
+}
+.BtnConnexion{
+    text-align:center;
+}
+.ConnexionBtn{
+    background: #C9DFF2;
+    border: 1px solid #000000;
+    color: #142740;
+    font-family: PoetsenOne;
+    font-size: 20px;
+    line-height: 24px;
+    width: 142px;
+    height: 34px;
+    margin: 20px 0px 20px 0px;
+}
+.ForgetRegister{
+    display: flex;
+    justify-content: space-between;
+}
+.ForgetRegister a{
+    color: white;
 }

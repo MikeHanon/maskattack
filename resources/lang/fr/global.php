@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'username'                             => 'Nom d\'utilisateur',
     'actions'                              => 'Actions',
     'add'                                  => 'Ajouter',
     'allRightsReserved'                    => 'Droits réservés',
