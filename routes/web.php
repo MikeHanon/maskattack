@@ -90,4 +90,4 @@ Route::post('contact-us', 'ContactController@saveContact');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('orders', 'OrderController');
