@@ -18,6 +18,7 @@
 </head>
 
 <body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page">
+@include('partials.menuUsers')
     @yield('content')
     @yield('scripts')
 </body>
