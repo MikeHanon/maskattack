@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Comment' => $baseDir . '/app/Comment.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Contact' => $baseDir . '/app/Contact.php',
     'App\\ContentCategory' => $baseDir . '/app/ContentCategory.php',
     'App\\ContentPage' => $baseDir . '/app/ContentPage.php',
     'App\\ContentTag' => $baseDir . '/app/ContentTag.php',
@@ -47,7 +48,6 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
-    'App\\Http\\Controllers\\CartController' => $baseDir . '/app/Http/Controllers/CartController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\Traits\\MediaUploadingTrait' => $baseDir . '/app/Http/Controllers/Traits/MediaUploadingTrait.php',
