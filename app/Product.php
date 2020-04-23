@@ -34,6 +34,7 @@ class Product extends Model implements HasMedia
         'updated_at',
         'deleted_at',
         'description',
+        'disponibility'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

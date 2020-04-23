@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->longText('description')->nullable();
             $table->decimal('price', 15, 2)->nullable();
             $table->integer('quantity');
-            $table->boolean('validated')->default('false');
+            $table->boolean('validated')->default(0);
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Order;
 use App\Product;
 use App\ProductCategory;
 use App\ProductTag;
@@ -131,6 +132,43 @@ class ProductController extends Controller
         $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media', 'public');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+
+    }
+    public function addOrder(Request $request,$id)
+    {
+        $product= Product::find($id);
+
+        $userId = Auth::user()->id;
+        Order::create([
+            'user_id'       => $userId,
+            'to_user_id'    => $product->user_id,
+            'product_id'    => $product->id,
+            'name'          => $product->name,
+            'description'   => $product->description,
+            'price'         => ($product->price * $product->quantity),
+            'quantity'      => $request->input('quantity'),
+            'validated'     =>  "false"
+        ]);
+        $newQuantity = $product->quantity - $request->input('quantity');
+        $product->update(['quantity' => $newQuantity]);
+
+        if($product->quantity == 0){
+            $product->update(['disponibility' => 0]);
+            return redirect()->route('admin.products.index');
+        }
+
+        return redirect()->back()->with('success', 'Produit ajouter au panier');
+
+    }
+
+    public function myProducts()
+    {
+
+        $userId= Auth::user()->id;
+        $products = Product::where('user_id', $userId)->where('disponibilty', 1)->get();
+
+
+        return view('admin.products.myProducts',compact('products'));
 
     }
 
