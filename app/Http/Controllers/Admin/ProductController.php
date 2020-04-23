@@ -11,11 +11,15 @@ use App\Order;
 use App\Product;
 use App\ProductCategory;
 use App\ProductTag;
+use App\User;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
 use Spatie\MediaLibrary\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use App\Events\newOrder;
 
 class ProductController extends Controller
 {
@@ -139,6 +143,7 @@ class ProductController extends Controller
         $product= Product::find($id);
 
         $userId = Auth::user()->id;
+        $email = User::where('id', $product->user_id)->get()->toArray();
         Order::create([
             'user_id'       => $userId,
             'to_user_id'    => $product->user_id,
@@ -151,6 +156,17 @@ class ProductController extends Controller
         ]);
         $newQuantity = $product->quantity - $request->input('quantity');
         $product->update(['quantity' => $newQuantity]);
+
+        Mail::send('mailOrder', [
+            'name'      => $request->get('name'),
+            'email'     =>'$email[0][\'email\']',
+            'subject'   => 'nouvelle commande sur Maskattack',
+            'user_message'=> 'vous avez une nouvelle commande sur Maskattack merci de vous connecter pour valider',
+        ], function ($message) use ($email){
+
+            $message->from('info@maskattack.be');
+            $message->to( $email[0]['email']);
+        });
 
         if($product->quantity == 0){
             $product->update(['disponibility' => 0]);
