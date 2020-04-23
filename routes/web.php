@@ -1,6 +1,6 @@
 <?php
 Route::get('/', function () {
-    return view('homeUsers');
+    return view('welcome');
 });
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::redirect('/', '/login');
@@ -87,3 +87,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 });
 Route::get('contact-us', 'ContactController@getContact');
 Route::post('contact-us', 'ContactController@saveContact');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
