@@ -175,7 +175,6 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
-            'Gloudemans\\Shoppingcart\\' => 24,
         ),
         'F' => 
         array (
@@ -524,10 +523,6 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'Gloudemans\\Shoppingcart\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src',
-        ),
         'Fruitcake\\Cors\\' => 
         array (
             0 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
@@ -662,6 +657,7 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
     public static $classMap = array (
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\ContentCategory' => __DIR__ . '/../..' . '/app/ContentCategory.php',
         'App\\ContentPage' => __DIR__ . '/../..' . '/app/ContentPage.php',
         'App\\ContentTag' => __DIR__ . '/../..' . '/app/ContentTag.php',
@@ -675,6 +671,7 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
         'App\\Http\\Controllers\\Admin\\FaqCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FaqCategoryController.php',
         'App\\Http\\Controllers\\Admin\\FaqQuestionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FaqQuestionController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
+        'App\\Http\\Controllers\\Admin\\MetaUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MetaUserController.php',
         'App\\Http\\Controllers\\Admin\\PermissionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PermissionsController.php',
         'App\\Http\\Controllers\\Admin\\ProductCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductCategoryController.php',
         'App\\Http\\Controllers\\Admin\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductController.php',
@@ -721,6 +718,7 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
         'App\\Http\\Requests\\MassDestroyContentTagRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyContentTagRequest.php',
         'App\\Http\\Requests\\MassDestroyFaqCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyFaqCategoryRequest.php',
         'App\\Http\\Requests\\MassDestroyFaqQuestionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyFaqQuestionRequest.php',
+        'App\\Http\\Requests\\MassDestroyMetaUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyMetaUserRequest.php',
         'App\\Http\\Requests\\MassDestroyPermissionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyPermissionRequest.php',
         'App\\Http\\Requests\\MassDestroyProductCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyProductCategoryRequest.php',
         'App\\Http\\Requests\\MassDestroyProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyProductRequest.php',
@@ -733,6 +731,7 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
         'App\\Http\\Requests\\StoreContentTagRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreContentTagRequest.php',
         'App\\Http\\Requests\\StoreFaqCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreFaqCategoryRequest.php',
         'App\\Http\\Requests\\StoreFaqQuestionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreFaqQuestionRequest.php',
+        'App\\Http\\Requests\\StoreMetaUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreMetaUserRequest.php',
         'App\\Http\\Requests\\StorePermissionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StorePermissionRequest.php',
         'App\\Http\\Requests\\StoreProductCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreProductCategoryRequest.php',
         'App\\Http\\Requests\\StoreProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreProductRequest.php',
@@ -745,6 +744,7 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
         'App\\Http\\Requests\\UpdateContentTagRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateContentTagRequest.php',
         'App\\Http\\Requests\\UpdateFaqCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateFaqCategoryRequest.php',
         'App\\Http\\Requests\\UpdateFaqQuestionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateFaqQuestionRequest.php',
+        'App\\Http\\Requests\\UpdateMetaUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateMetaUserRequest.php',
         'App\\Http\\Requests\\UpdatePasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatePasswordRequest.php',
         'App\\Http\\Requests\\UpdatePermissionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatePermissionRequest.php',
         'App\\Http\\Requests\\UpdateProductCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateProductCategoryRequest.php',
@@ -764,6 +764,7 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
         'App\\Http\\Resources\\Admin\\ProductTagResource' => __DIR__ . '/../..' . '/app/Http/Resources/Admin/ProductTagResource.php',
         'App\\Http\\Resources\\Admin\\RoleResource' => __DIR__ . '/../..' . '/app/Http/Resources/Admin/RoleResource.php',
         'App\\Http\\Resources\\Admin\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/Admin/UserResource.php',
+        'App\\MetaUser' => __DIR__ . '/../..' . '/app/MetaUser.php',
         'App\\Notifications\\VerifyUserNotification' => __DIR__ . '/../..' . '/app/Notifications/VerifyUserNotification.php',
         'App\\Permission' => __DIR__ . '/../..' . '/app/Permission.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
@@ -2049,17 +2050,6 @@ class ComposerStaticInit428b23ef3f79404809416f1f1621a79e
         'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'Fruitcake\\Cors\\CorsServiceProvider' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/CorsServiceProvider.php',
         'Fruitcake\\Cors\\HandleCors' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/HandleCors.php',
-        'Gloudemans\\Shoppingcart\\CanBeBought' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/CanBeBought.php',
-        'Gloudemans\\Shoppingcart\\Cart' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/Cart.php',
-        'Gloudemans\\Shoppingcart\\CartItem' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/CartItem.php',
-        'Gloudemans\\Shoppingcart\\CartItemOptions' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/CartItemOptions.php',
-        'Gloudemans\\Shoppingcart\\Contracts\\Buyable' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/Contracts/Buyable.php',
-        'Gloudemans\\Shoppingcart\\Contracts\\InstanceIdentifier' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/Contracts/InstanceIdentifier.php',
-        'Gloudemans\\Shoppingcart\\Exceptions\\CartAlreadyStoredException' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/Exceptions/CartAlreadyStoredException.php',
-        'Gloudemans\\Shoppingcart\\Exceptions\\InvalidRowIDException' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/Exceptions/InvalidRowIDException.php',
-        'Gloudemans\\Shoppingcart\\Exceptions\\UnknownModelException' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/Exceptions/UnknownModelException.php',
-        'Gloudemans\\Shoppingcart\\Facades\\Cart' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/Facades/Cart.php',
-        'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider' => __DIR__ . '/..' . '/bumbummen99/shoppingcart/src/ShoppingcartServiceProvider.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',

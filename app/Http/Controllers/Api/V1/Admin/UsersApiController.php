@@ -39,14 +39,17 @@ class UsersApiController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UserResource($user->load(['roles']));
+        return new UserResource([$user->load(['roles']),$user->load('metaUser')]);
 
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
+        $user = User::create($request->all());
+        $insertedId = $user->id;
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
+        MetaUser::updateOrCreate(['user_id'=>$insertedId,'First_name'=>$request->First_name, 'Last_name'=>$request->Last_name]);
 
         return (new UserResource($user))
             ->response()
