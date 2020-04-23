@@ -8,9 +8,9 @@
             </a>
         </div>
     </div>
-    <div class="card">
+    <div class="LoginBox">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">
+            <p class="TitleLogin">
                 {{ trans('global.login') }}
             </p>
 
