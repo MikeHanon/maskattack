@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\Admin\ProductResource;
+use App\Order;
 use App\Product;
 use Gate;
 use Illuminate\Http\Request;
@@ -82,4 +83,40 @@ class ProductApiController extends Controller
 
     }
 
-}
+    public function addOrder(Request $request,$id)
+    {
+        $product= Product::find($id);
+
+        $userId = Auth::user()->id;
+        Order::create([
+            'user_id'       => $userId,
+            'to_user_id'    => $product->user_id,
+            'product_id'    => $product->id,
+            'name'          => $product->name,
+            'description'   => $product->description,
+            'price'         => ($product->price * $product->quantity),
+            'quantity'      => $request->input('quantity'),
+            'validated'     =>  "false"
+        ]);
+        $newQuantity = $product->quantity - $request->input('quantity');
+        $product->update(['quantity' => $newQuantity]);
+
+        if($product->quantity == 0){
+            $product->update(['disponibility' => 0]);
+            return redirect()->route('admin.products.index');
+        }
+
+        return (new ProductResource($product))
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
+
+    }
+
+    public function myProducts()
+    {
+
+        $userId= Auth::user()->id;
+
+        return new ProductResource(Product::where('user_id', $userId)->where('disponibilty', 1)->with(['categories', 'tags'])->get());
+
+    }

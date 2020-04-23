@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('product-tags', 'ProductTagController');
 
     // Products
+    Route::get('products/myProducts', 'ProductController@myProducts')->name('products.myProducts');
     Route::delete('products/destroy', 'ProductController@massDestroy')->name('products.massDestroy');
     Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
     Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
@@ -76,6 +77,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('meta-users/destroy', 'MetaUserController@massDestroy')->name('meta-users.massDestroy');
     Route::resource('meta-users', 'MetaUserController');
 
+    Route::post('orders/{id}', 'ProductController@addOrder')->name('order.addOrder');
+
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
@@ -88,6 +91,12 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::get('contact-us', 'ContactController@getContact');
 Route::post('contact-us', 'ContactController@saveContact');
 
+// orders
+Route::resource('orders', 'OrderController');
+Route::get('orders', 'OrderController@myOrder')->name('order.my-order');
+
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
