@@ -88,6 +88,11 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::get('contact-us', 'ContactController@getContact');
 Route::post('contact-us', 'ContactController@saveContact');
 
+// orders
+Route::resource('orders', 'OrderController');
+Route::get('orders', 'OrderController@myOrder')->name('order.my-order');
+
+
 Auth::routes();
 
-Route::resource('orders', 'OrderController');
+

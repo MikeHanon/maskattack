@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -14,7 +15,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $userId= Auth::user()->id;
+        $orders = Order::where('user_id', $userId);
+        return view('order.index', compact($orders));
+    }
+
+    public function myOrder()
+    {
+        $userId= Auth::user()->id;
+        $orders = Order::where('to_user_id', $userId);
         return view('order.index', compact($orders));
     }
 
