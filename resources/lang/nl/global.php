@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'username'                             => 'Gebruikersnaam',
     'actions'                              => 'Actie',
     'add'                                  => 'Toevoegen',
     'allRightsReserved'                    => 'Alle rechten voorbehouden.',
