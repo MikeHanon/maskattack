@@ -79,3 +79,15 @@ table.dataTable thead .sorting_desc {
 .form-check.is-invalid ~ .invalid-feedback {
     display: block;
 }
+.TitleLogin{
+    text-align: center;
+    font-family: PoetsenOne;
+    color: #FAFAFA;
+    font-size: 40px;
+    line-height: 48px;
+    
+}
+.LoginBox{
+    background: #142740;
+    border-radius: 32px;
+}
