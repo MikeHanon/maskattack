@@ -88,14 +88,29 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
     }
 
 });
-Route::get('contact-us', 'ContactController@getContact');
-Route::post('contact-us', 'ContactController@saveContact');
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'users', 'middleware' => ['auth']], function () {
+    Route::resource('users','UsersController');
+});
+
+Route::get('contact-us', 'ContactController@getContact')->name('contact.form');
+Route::post('contact-us', 'ContactController@saveContact')->name('contact.post');
 
 // orders
+
+Route::get('orders', 'OrderController@index')->name('order.index');
+Route::get('orders/myOrders', 'OrderController@myOrder')->name('order.my-order');
 Route::resource('orders', 'OrderController');
-Route::get('orders', 'OrderController@myOrder')->name('order.my-order');
 
-
+Route::group(['prefix' => 'product', 'as' => 'product.', 'namespace' => 'Product', 'middleware' => ['auth']], function () {
+    Route::get('products/myProducts', 'ProductController@myProducts')->name('products.myProducts');
+    Route::delete('products/destroy', 'ProductController@massDestroy')->name('products.massDestroy');
+    Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
+    Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
+    Route::resource('products', 'ProductController');
+});
+Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Faq', 'middleware' => ['web']], function () {
+    Route::get('/', 'FaqQuestionController@index')->name('index');
+});
 
 Auth::routes();
 

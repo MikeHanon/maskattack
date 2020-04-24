@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
@@ -27,23 +27,23 @@ class ProductController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
 
         $products = Product::all();
 
-        return view('admin.products.index', compact('products'));
+        return view('products.index', compact('products'));
     }
 
     public function create()
     {
-        abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
 
         $categories = ProductCategory::all()->pluck('name', 'id');
 
 
         $tags = ProductTag::all()->pluck('name', 'id');
 
-        return view('admin.products.create', compact('categories', 'tags'));
+        return view('products.create', compact('categories', 'tags'));
     }
 
     public function store(StoreProductRequest $request)
@@ -63,13 +63,13 @@ class ProductController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $product->id]);
         }
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('products.index');
 
     }
 
     public function edit(Product $product)
     {
-        abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
 
         $categories = ProductCategory::all()->pluck('name', 'id');
 
@@ -77,7 +77,7 @@ class ProductController extends Controller
 
         $product->load('categories', 'tags');
 
-        return view('admin.products.edit', compact('categories', 'tags', 'product'));
+        return view('products.edit', compact('categories', 'tags', 'product'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
@@ -95,22 +95,22 @@ class ProductController extends Controller
             $product->photo->delete();
         }
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('products.index');
 
     }
 
     public function show(Product $product)
     {
-        abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
 
         $product->load('categories', 'tags');
 
-        return view('admin.products.show', compact('product'));
+        return view('products.show', compact('product'));
     }
 
     public function destroy(Product $product)
     {
-        abort_if(Gate::denies('product_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
 
         $product->delete();
 
@@ -128,7 +128,7 @@ class ProductController extends Controller
 
     public function storeCKEditorImages(Request $request)
     {
-        abort_if(Gate::denies('product_create') && Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
 
         $model         = new Product();
         $model->id     = $request->input('crud_id', 0);
@@ -142,10 +142,10 @@ class ProductController extends Controller
     {
         $product= Product::find($id);
 
-        $user = Auth::user();
+        $userId = Auth::user()->id;
         $email = User::where('id', $product->user_id)->get()->toArray();
         Order::create([
-            'user_id'       => $user->id,
+            'user_id'       => $userId,
             'to_user_id'    => $product->user_id,
             'product_id'    => $product->id,
             'name'          => $product->name,
@@ -158,9 +158,8 @@ class ProductController extends Controller
         $product->update(['quantity' => $newQuantity]);
 
         Mail::send('mailOrder', [
-            'name'      => $user->name,
-            'email'     =>$user->email,
-            'orderId'   => '',
+            'name'      => $request->get('name'),
+            'email'     =>'$email[0][\'email\']',
             'subject'   => 'nouvelle commande sur Maskattack',
             'user_message'=> 'vous avez une nouvelle commande sur Maskattack merci de vous connecter pour valider',
         ], function ($message) use ($email){
@@ -185,7 +184,7 @@ class ProductController extends Controller
         $products = Product::where('user_id', $userId)->where('disponibilty', 1)->get();
 
 
-        return view('admin.products.myProducts',compact('products'));
+        return view('products.myProducts',compact('products'));
 
     }
 
