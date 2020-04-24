@@ -35,9 +35,9 @@
             }
 
             .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
+                text-align:right;
+                margin:25px 70px;
+                line-height:100px;
             }
 
             .content {
@@ -61,7 +61,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-            .accueilAll{
+            .accueilAll, .logoacc{
                 width:90%;
                 margin:auto;
             }
@@ -74,10 +74,11 @@
                 color:#FFF;
                 display:flex;
                 flex-direction:row;
-                padding:20px 30px;
+                padding:30px 20px;
             }
             .textPartage{
-                margin-left:30px;
+                margin-left:7%;
+                margin-top:5%;
                 font-size:18pt;
             }
             .ou{
@@ -95,10 +96,12 @@
                 color:#142740;
                 display:flex;
                 flex-direction:row;
-                padding:20px 30px;
+                padding:30px 30px;
             }
             .textTrouver{
-                margin-right:30px;
+                margin-right:7%;
+                margin-left:3%;
+                margin-top:5%;
                 font-size:18pt;
             }
             .question{
@@ -115,18 +118,30 @@
                 width:100%;
                 margin:auto;
                 margin-top:50px;
+                margin-left:10%;
             }
             .imgFab{
                 margin-top:50px;
+                margin-right:10%;
             }
             .fabriqueAll{
                 display:flex;
                 flex-direction:row;
+                margin-bottom:5%;
+            }
+            .logoacc{
+                margin-top:-6%;
+                margin-left:7%;
+                margin-bottom:70px;
+            }
+            .imgvirus{
+                margin-left:3%;
             }
         </style>
     </head>
     <body>
-
+    
+            
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -146,26 +161,31 @@
                         </form>
 {{--                        menu quand autentifier--}}
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Connexion</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Inscription</a>
+                            <a href="{{route('contact.form')}}">Contactez-nous</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
+            <div class="logoacc">
+                <img src="{{asset('img/logo-maskattack.png')}}" alt="logo"/>
+            </div>
+
             <div class="accueilAll">
 
             <div class="accueilContain">
                 <div class="partage">
-                    <img src="#" alt="partage"/>
+                    <img src="{{asset('img/imgacc1.jpg')}}" alt="partage" width="330px" class="imgvirus"/>
                     <p class="textPartage">Partagez vos masques, tissus, impressions 3D  sur notre plateforme et rentrez dans vos frais</p>
                 </div>
                 <div class="ou">OU</div>
                 <div class="trouver">
                     <p class="textTrouver">Trouvez des masques et/ou du matériel pour leur confection, auprès de notre communauté</p>
-                    <img src="#" alt="trouver"/>
+                    <img src="{{asset('img/imgacc2.jpg')}}" alt="trouver" width="330px"/>
                 </div>
                 <div class="question">
                     <p class="questionTexte"><span class="quest">Qu’est-ce que Maskattack ?</span><br><br>
@@ -190,7 +210,7 @@
                     source: <a href="https://www.repairtogether.be/news/coronavirus-appels-fabrication-de-masque-de-protection">RepairTogether</a>
                 </p>
             </div>
-            <div class="imgFab"><img src="#" alt="règle hygiénique" width="600px" height="630px"/></div>
+            <div class="imgFab"><img src="{{asset('img/imgacc3.jpg')}}" alt="règle hygiénique" width="600px" height="630px"/></div>
             </div>
 
             </div>
