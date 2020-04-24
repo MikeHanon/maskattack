@@ -42,7 +42,7 @@ class ContactController extends Controller
             $message->to('mike.hanon@gmail.com');
         });
 
-        return back()->with('success', 'Merci de nous avoir contacté');
+        return back()->with('success', trans('global.contact_success'));
 
     }
 }

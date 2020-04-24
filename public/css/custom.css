@@ -134,3 +134,113 @@ table.dataTable thead .sorting_desc {
 .ForgetRegister a{
     color: white;
 }
+.ContactUsTitle{
+    color: #000000;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    margin: 30px 0px 30px 0px;
+}
+.ContactUsInput{
+    background: #FAFAFA;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    width: 600px !important;
+    margin-bottom: 20px;
+    margin-left: 300px;
+    padding-left: 5px;
+}
+.ContactUsInput::placeholder{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: bold;
+    color: #000000;
+}
+.ContactUsMsg{
+    background: #FAFAFA;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-left: 300px;
+    width: 600px;
+    padding-left: 5px;
+}
+.ContactUsMsg::placeholder{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: bold;
+    color: #000000;
+}
+.BtnSend{
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius:3px;
+    font-weight: bold;
+    font-family: PoetsenOne;
+    font-size: 20px;
+    line-height: 24px;
+    width: 142px;
+    height: 34px;
+    margin: 50px 0px 20px 0px;
+    margin-left: 300px;
+    background: #FAFAFA;
+}
+.RedAlert{
+    color: red;
+}
+.InputAlert{
+    border: 1px solid red;
+}
+.AlertSuccess{
+    background-color: rgb(20, 39, 64, 0.8);
+    padding: 5px;
+    color:white;
+    font-weight: bold;
+    font-size: 10pt;
+    margin: auto;
+    border-radius: 3px;
+    text-align: center;
+    width: 15%;
+    margin: 20px auto 20px auto;
+}
+.ContactUsPage{
+    display: flex;
+    flex-direction: row;
+}
+.ContentImg{
+    margin: 20px 0px 0px 275px;
+}
+.ContentImg img{
+    width: 400px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+.NavLink{
+    color: #142740;
+    font-family: PoetsenOne;
+    font-size: 30px;
+}
+.NavContent li{
+    list-style: none;
+    margin-left: 50px;
+}
+.NavContent ul li{
+    display: inline;
+}
+.navContent {
+    margin-top: 40px;
+    width: 100%;
+}
+.navbarAttack{
+    display: flex;
+    flex-direction: row;
+}
+.RightItem a:first-child{
+    color: #142740;
+    font-family: Roboto;
+    margin-left: 90%;
+}
+.Navcontent ul {
+    width: 100%;
+}
