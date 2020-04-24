@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@include('partials.menuUsers')
 @section('content')
     <div id="app">
         <example-component></example-component>

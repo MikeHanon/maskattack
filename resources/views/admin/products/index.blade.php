@@ -35,6 +35,9 @@
                             {{ trans('cruds.product.fields.price') }}
                         </th>
                         <th>
+                            {{ trans('cruds.product.fields.quantity') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.product.fields.category') }}
                         </th>
                         <th>
@@ -65,6 +68,9 @@
                             </td>
                             <td>
                                 {{ $product->price ?? '' }}
+                            </td>
+                            <td>
+                                {{ $product->quantity ?? '' }}
                             </td>
                             <td>
                                 @foreach($product->categories as $key => $item)

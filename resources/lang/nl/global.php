@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'contact_success'                      => 'Bericht verstuurd',
+    'contact_us'                           => 'Contacteer Ons',
+    'username'                             => 'Gebruikersnaam',
     'actions'                              => 'Actie',
     'add'                                  => 'Toevoegen',
     'allRightsReserved'                    => 'Alle rechten voorbehouden.',

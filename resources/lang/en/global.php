@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'contact_success'                      => 'Message send',
+    'contact_us'                           => 'Contact Us',
+    'username'                             => 'Username',
     'actions'                              => 'Actions',
     'add'                                  => 'Add',
     'allRightsReserved'                    => 'All rights reserved.',

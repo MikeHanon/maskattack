@@ -140,4 +140,9 @@ class User extends Authenticatable
 
     }
 
+    public function metaUser()
+    {
+        return $this->hasOne('App\MetaUser');
+    }
+
 }

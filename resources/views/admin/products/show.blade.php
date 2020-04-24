@@ -5,7 +5,24 @@
     <div class="card-header">
         {{ trans('global.show') }} {{ trans('cruds.product.title') }}
     </div>
+    <li class="nav-item">
+        <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('addOrder').submit();">
+            <p>
+                <i class="fas fa-fw fa-sign-out-alt nav-icon">
 
+                </i>
+            <p class="btn btn-success">commander</p>
+
+        </a>
+    </li>
+    <form id="addOrder" action="{{ route('admin.order.addOrder', $product->id) }}" method="POST" style="">
+        <input type="text" name="quantity" id="quantity">
+        <button class="btn btn-success" type="submit">commander</button>
+        {{ csrf_field() }}
+    </form>
+    <div>
+
+    </div>
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
@@ -45,6 +62,14 @@
                         </th>
                         <td>
                             {{ $product->price }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.quantity') }}
+                        </th>
+                        <td>
+                            {{ $product->quantity }}
                         </td>
                     </tr>
                     <tr>

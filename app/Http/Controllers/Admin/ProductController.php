@@ -7,13 +7,19 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Order;
 use App\Product;
 use App\ProductCategory;
 use App\ProductTag;
+use App\User;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
 use Spatie\MediaLibrary\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use App\Events\newOrder;
 
 class ProductController extends Controller
 {
@@ -34,6 +40,7 @@ class ProductController extends Controller
 
         $categories = ProductCategory::all()->pluck('name', 'id');
 
+
         $tags = ProductTag::all()->pluck('name', 'id');
 
         return view('admin.products.create', compact('categories', 'tags'));
@@ -41,6 +48,9 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        $userId = Auth::user()->id;
+       $data = $request->request->add(['user_id' => $userId]);
+
         $product = Product::create($request->all());
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
@@ -126,6 +136,56 @@ class ProductController extends Controller
         $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media', 'public');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+
+    }
+    public function addOrder(Request $request,$id)
+    {
+        $product= Product::find($id);
+
+        $user = Auth::user();
+        $email = User::where('id', $product->user_id)->get()->toArray();
+        Order::create([
+            'user_id'       => $user->id,
+            'to_user_id'    => $product->user_id,
+            'product_id'    => $product->id,
+            'name'          => $product->name,
+            'description'   => $product->description,
+            'price'         => ($product->price * $product->quantity),
+            'quantity'      => $request->input('quantity'),
+            'validated'     =>  "false"
+        ]);
+        $newQuantity = $product->quantity - $request->input('quantity');
+        $product->update(['quantity' => $newQuantity]);
+
+        Mail::send('mailOrder', [
+            'name'      => $user->name,
+            'email'     =>$user->email,
+            'orderId'   => '',
+            'subject'   => 'nouvelle commande sur Maskattack',
+            'user_message'=> 'vous avez une nouvelle commande sur Maskattack merci de vous connecter pour valider',
+        ], function ($message) use ($email){
+
+            $message->from('info@maskattack.be');
+            $message->to( $email[0]['email']);
+        });
+
+        if($product->quantity == 0){
+            $product->update(['disponibility' => 0]);
+            return redirect()->route('admin.products.index');
+        }
+
+        return redirect()->back()->with('success', 'Produit ajouter au panier');
+
+    }
+
+    public function myProducts()
+    {
+
+        $userId= Auth::user()->id;
+        $products = Product::where('user_id', $userId)->where('disponibilty', 1)->get();
+
+
+        return view('admin.products.myProducts',compact('products'));
 
     }
 
