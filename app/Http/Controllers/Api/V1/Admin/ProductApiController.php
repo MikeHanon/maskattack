@@ -83,25 +83,25 @@ class ProductApiController extends Controller
 
     }
 
-    public function addOrder(Request $request,$id)
+    public function addOrder(Request $request, $id)
     {
-        $product= Product::find($id);
+        $product = Product::find($id);
 
         $userId = Auth::user()->id;
         Order::create([
-            'user_id'       => $userId,
-            'to_user_id'    => $product->user_id,
-            'product_id'    => $product->id,
-            'name'          => $product->name,
-            'description'   => $product->description,
-            'price'         => ($product->price * $product->quantity),
-            'quantity'      => $request->input('quantity'),
-            'validated'     =>  "false"
+            'user_id' => $userId,
+            'to_user_id' => $product->user_id,
+            'product_id' => $product->id,
+            'name' => $product->name,
+            'description' => $product->description,
+            'price' => ($product->price * $product->quantity),
+            'quantity' => $request->input('quantity'),
+            'validated' => "false"
         ]);
         $newQuantity = $product->quantity - $request->input('quantity');
         $product->update(['quantity' => $newQuantity]);
 
-        if($product->quantity == 0){
+        if ($product->quantity == 0) {
             $product->update(['disponibility' => 0]);
             return redirect()->route('admin.products.index');
         }
@@ -112,6 +112,7 @@ class ProductApiController extends Controller
 
     }
 
+
     public function myProducts()
     {
 
@@ -120,3 +121,4 @@ class ProductApiController extends Controller
         return new ProductResource(Product::where('user_id', $userId)->where('disponibilty', 1)->with(['categories', 'tags'])->get());
 
     }
+}

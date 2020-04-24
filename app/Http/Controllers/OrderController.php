@@ -24,7 +24,7 @@ class OrderController extends Controller
     {
         $userId= Auth::user()->id;
         $orders = Order::where('to_user_id', $userId);
-        return view('order.index', compact($orders));
+        return view('order.myOrder', compact($orders));
     }
 
     /**
@@ -93,5 +93,12 @@ class OrderController extends Controller
     {
         $order->delete();
         return redirect()->route('orders.index');
+    }
+
+    public function acceptOrder(Request $request, Order $order)
+    {
+
+        return redirect()->route('orders.my-order');
+
     }
 }
