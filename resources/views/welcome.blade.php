@@ -141,20 +141,12 @@
     </head>
     <body>
     
-            
+    
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                                <p>
-                                    <i class="fas fa-fw fa-sign-out-alt nav-icon">
-
-                                    </i>
-                                <p>{{ trans('global.logout') }}</p>
-
-                            </a>
-                        </li>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">{{ trans('global.logout') }}</a>
+                        
                         <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
                             <button type="submit">logout</button>
                             {{ csrf_field() }}
@@ -170,6 +162,7 @@
                     @endauth
                 </div>
             @endif
+            
 
             <div class="logoacc">
                 <img src="{{asset('img/logo-maskattack.png')}}" alt="logo"/>
