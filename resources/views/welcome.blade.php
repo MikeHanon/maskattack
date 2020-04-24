@@ -137,6 +137,17 @@
             .imgvirus{
                 margin-left:3%;
             }
+            .bandeau{
+                background-color:#142740;
+                color:#FFF;
+                padding:10px 15px;
+                font-style:italic;
+                width:35%;
+                margin:auto;
+                margin-bottom:25px;
+                margin-top:-15px;
+                border-radius:7px;
+            }
         </style>
     </head>
     <body>
@@ -169,7 +180,7 @@
             </div>
 
             <div class="accueilAll">
-
+            <p class="bandeau">Les préinscriptions sont ouvertes, lancement de la plateforme le Mercredi 29/04/2020</p>
             <div class="accueilContain">
                 <div class="partage">
                     <img src="{{asset('img/imgacc1.jpg')}}" alt="partage" width="330px" class="imgvirus"/>
