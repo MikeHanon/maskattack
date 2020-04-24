@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'contact_success'                      => 'Message Envoyé',
+    'contact_us'                           => 'Contactez-nous',
     'username'                             => 'Nom d\'utilisateur',
     'actions'                              => 'Actions',
     'add'                                  => 'Ajouter',
