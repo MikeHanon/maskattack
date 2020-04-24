@@ -14,10 +14,7 @@ class CreateMetaUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('First_name');
             $table->string('Last_name');
-            $table->string('adresse')->nullable();
-            $table->string('acount_nbr')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('paypal')->nullable();
+            $table->string('Ville')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

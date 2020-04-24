@@ -69,7 +69,7 @@ class UsersController extends Controller
             'user_id'=>$insertedId,
             'First_name'=>$request->First_name,
             'Last_name'=>$request->Last_name,
-
+            'Ville'=>$request->Ville,
         ]);
 
         return redirect()->route('users.index');

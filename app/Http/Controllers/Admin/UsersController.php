@@ -61,7 +61,7 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user = User::create($request->all());
+
         $insertedId = $user->id;
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
