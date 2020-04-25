@@ -43,6 +43,11 @@
                     <div class="Input">
                         <input type="password" name="password_confirmation" class="LoginInput" required placeholder="{{ trans('global.login_password_confirmation') }}">
                     </div>
+                    <div class="Input">
+                        <input type="hidden" name="roles[]" id="roles" class="LoginInput{{ $errors->has('password') ? ' is-invalid' : '' }}" value="2" >
+
+                    </div>
+
                 </div>
                     <div class="BtnConnexion">
                         <button type="submit" class="ConnexionBtn">

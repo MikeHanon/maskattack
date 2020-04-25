@@ -140,13 +140,13 @@
         </style>
     </head>
     <body>
-    
-    
+
+
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">{{ trans('global.logout') }}</a>
-                        
+
                         <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
                             <button type="submit">logout</button>
                             {{ csrf_field() }}
@@ -162,7 +162,7 @@
                     @endauth
                 </div>
             @endif
-            
+
 
             <div class="logoacc">
                 <img src="{{asset('img/logo-maskattack.png')}}" alt="logo"/>
@@ -182,7 +182,7 @@
                 </div>
                 <div class="question">
                     <p class="questionTexte"><span class="quest">Qu’est-ce que Maskattack ?</span><br><br>
-                    Maskattack est une initiative citoyenne qui vise à mettre en relation des citoyens couturiers amateurs ou professionels avec d’autres citoyens pour qui la necessité du port du masque se fait sentir. 
+                    Maskattack est une initiative citoyenne qui vise à mettre en relation des citoyens couturiers amateurs ou professionnels avec d’autres citoyens pour qui la nécessité du port du masque se fait sentir.
                     Cette initiative est entièrement gratuite et bénévole.</p>
                 </div>
             </div>
@@ -193,12 +193,12 @@
                 <p class="fabriquerTexte"> FABRIQUER DES MASQUES EN TISSU:<br><br>
                     - Niveau Fédéral: Spf santé publique:<br>
                     Faites votre masque buccal: Méthode / Tutoriel<br>
-                    https://faitesvotremasquebuccal.be (FR)<br>
-                    https://www.uza.be/mondmaskers (NL)<br><br>
+                   <a href="https://faitesvotremasquebuccal.be"> https://faitesvotremasquebuccal.be (FR)</a><br>
+                    <a href="https://www.uza.be/mondmaskers">https://www.uza.be/mondmaskers (NL)</a><br><br>
                     - Langue des signes : plusieurs vidéos des mesures de précautions<br>
-                    https://www.info-coronavirus.be/fr/videos#interactions<br><br>
+                   <a href="https://www.info-coronavirus.be/fr/videos#interactions">https://www.info-coronavirus.be/fr/videos#interactions</a> <br><br>
                     Lire ! : Coutures & Paillettes - Ingénieur textile<br>
-                    La Place des masques en tissus dans la prévention du Coronavirus<br>
+                   <a href="https://coutureetpaillettes.com/mes-coutures/masques-tissus-prevention-coronavirus/?fbclid=IwAR0hquPS80JQK7g5UKEjcLUCLmK_lsANSab7p-9CJywUtLZLD7KzJStJdZo"> La Place des masques en tissus dans la prévention du Coronavirus</a><br>
                     (Comparatif Coton-Polyester / conseils,<br>
                     source: <a href="https://www.repairtogether.be/news/coronavirus-appels-fabrication-de-masque-de-protection">RepairTogether</a>
                 </p>

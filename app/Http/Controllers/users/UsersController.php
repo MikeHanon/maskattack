@@ -25,14 +25,7 @@ class UsersController extends Controller
         return view('users.index', compact('users'));
     }
 
-    public function create()
-    {
-        abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::all()->pluck('title', 'id');
-
-        return view('users.create', compact('roles'));
-    }
 
     public function store(StoreUserRequest $request)
     {
@@ -53,10 +46,10 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::all()->pluck('title', 'id');
-
+        $user->load('metaUser');
         $user->load('roles');
 
-        return view('users.edit', compact('roles', 'user'));
+        return view('users.edit', compact('roles', 'user', 'metaUser'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
