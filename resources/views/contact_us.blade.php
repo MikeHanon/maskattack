@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('partials.menuUsers')
+
 @section('content')
 <h5 class="ContactUsTitle">{{ trans('global.contact_us') }}</h5>
 <div class="ContactUsPage">
