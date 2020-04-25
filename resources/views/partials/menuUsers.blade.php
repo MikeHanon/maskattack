@@ -7,6 +7,9 @@
                 <a class="NavLink" href="{{route('home')}}">Accueil</a>
             </li>
             <li>
+                <a class="NavLink" href="{{route('profile.users.edit',$data[0]['id'])}}">Profile</a>
+            </li>
+            <li>
                 <a class="NavLink" href="{{route('contact.form')}}">Contact</a>
             </li>
             <li class="dropdown RightItem">

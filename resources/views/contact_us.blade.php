@@ -49,7 +49,7 @@
                     @enderror
                 </div>
                 <button type="submit" class="BtnSend">{{ trans('global.send') }}</button>
-        </div>
+
     </form>
     <div class="ContentImg">
         <img src="{{asset('img/contactimg.jpg')}}" alt="StayHome">
