@@ -6,13 +6,13 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# @lang('Salut lulu!')
+# @lang('Salut!')
 @endif
 @endif
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
-{{ $line }}lili
+{{ $line }}
 
 @endforeach
 
@@ -29,13 +29,13 @@
     }
 ?>
 @component('mail::button', ['url' => $actionUrl, 'color' => $color])
-{{ $actionText }} lala
+{{ $actionText }}
 @endcomponent
 @endisset
 
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)
-{{ $line }}lolo
+{{ $line }}
 
 @endforeach
 

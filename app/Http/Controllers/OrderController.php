@@ -80,6 +80,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        $order->update($request->all());
         return redirect()->route('orders.index');
     }
 
@@ -97,7 +98,7 @@ class OrderController extends Controller
 
     public function acceptOrder(Request $request, Order $order)
     {
-
+        $order->update($request->all());
         return redirect()->route('orders.my-order');
 
     }

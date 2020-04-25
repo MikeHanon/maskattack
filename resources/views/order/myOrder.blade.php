@@ -1,12 +1,7 @@
 @extends('layouts.app')
 @section('content')
-{{$product}}
-
-
-
-
+    {{$orders}}
 @endsection
-
 @section('scripts')
 
 @endsection

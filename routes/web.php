@@ -99,6 +99,7 @@ Route::post('contact-us', 'ContactController@saveContact')->name('contact.post')
 
 Route::get('orders', 'OrderController@index')->name('order.index');
 Route::get('orders/myOrders', 'OrderController@myOrder')->name('order.my-order');
+Route::post('orders/acceptOrders', 'OrderController@acceptOrder')->name('order.accept-order');
 Route::resource('orders', 'OrderController');
 
 Route::group(['prefix' => 'product', 'as' => 'product.', 'namespace' => 'Product', 'middleware' => ['auth']], function () {
