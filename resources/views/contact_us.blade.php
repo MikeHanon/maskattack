@@ -9,7 +9,7 @@
         {{ Session::get('success') }}
     </div>
     @endif
-    <div class="">
+
     <form method="post" action="contact-us">
         {{csrf_field()}}
                 <div>

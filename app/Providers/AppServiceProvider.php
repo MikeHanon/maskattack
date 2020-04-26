@@ -27,13 +27,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         view()->composer('*',function ($view){
+            if(Auth::check()){
             $userId = Auth::user()->id;
 
             $data = User::where('id', $userId)->get()->toArray();
 
             $view->with('data', $data);
+            }else {
+                $view->with('data', null);
+            }
         });
+
 
 
 
