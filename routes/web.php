@@ -3,6 +3,8 @@ Route::get('/', function () {
     return view('homeUsers');
 });
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about-us', 'HomeController@aboutUs')->name('about-us');
+Route::get('/tuto', 'HomeController@tuto')->name('tuto');
 //Route::redirect('/', '/login');
 //Route::get('/home', function () {
 //    if (session('status')) {
@@ -99,19 +101,18 @@ Route::post('contact-us', 'ContactController@saveContact')->name('contact.post')
 
 Route::get('orders', 'OrderController@index')->name('order.index');
 Route::get('orders/myOrders', 'OrderController@myOrder')->name('order.my-order');
-Route::post('orders/acceptOrders', 'OrderController@acceptOrder')->name('order.accept-order');
+Route::post('orders/acceptOrders/{order}', 'OrderController@acceptOrder')->name('order.accept-order');
 Route::resource('orders', 'OrderController');
 
 Route::group(['prefix' => 'product', 'as' => 'product.', 'namespace' => 'Product', 'middleware' => ['auth']], function () {
+    Route::post('orders/{id}', 'ProductController@addOrder')->name('order.addOrder');
     Route::get('products/myProducts', 'ProductController@myProducts')->name('products.myProducts');
     Route::delete('products/destroy', 'ProductController@massDestroy')->name('products.massDestroy');
     Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
     Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
     Route::resource('products', 'ProductController');
 });
-Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Faq', 'middleware' => ['web']], function () {
-    Route::get('/', 'FaqQuestionController@index')->name('index');
-});
+
 
 Auth::routes();
 

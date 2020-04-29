@@ -74,8 +74,8 @@
                 <span class="help-block">{{ trans('cruds.product.fields.tag_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="photo">{{ trans('cruds.product.fields.photo') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
+                <label for="images">{{ trans('cruds.product.fields.photo') }}</label>
+                <input type="file" name="images" id="image">
                 </div>
                 @if($errors->has('photo'))
                     <span class="text-danger">{{ $errors->first('photo') }}</span>

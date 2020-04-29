@@ -27,11 +27,9 @@ class ProductController extends Controller
 
     public function index()
     {
-
-
         $products = Product::all();
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'user'));
     }
 
     public function create()
@@ -48,22 +46,27 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+
         $userId = Auth::user()->id;
-       $data = $request->request->add(['user_id' => $userId]);
+        $userName = Auth::user()->name;
+        $imageName = time().'.'.$request->images->extension();
+        $data = $request->request->add([
+            'user_id' => $userId,
+            'image' => 'images/product/'.$imageName,
+            'user_name' => $userName,
+        ]);
+
+
+
+
+        $request->images->move(public_path('images/product'), $imageName);
 
         $product = Product::create($request->all());
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
 
-        if ($request->input('photo', false)) {
-            $product->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
-        }
 
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $product->id]);
-        }
-
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
 
     }
 
@@ -95,7 +98,7 @@ class ProductController extends Controller
             $product->photo->delete();
         }
 
-        return redirect()->route('products.index');
+        return redirect()->route('product.products.myProducts');
 
     }
 
@@ -143,34 +146,25 @@ class ProductController extends Controller
         $product= Product::find($id);
 
         $userId = Auth::user()->id;
-        $email = User::where('id', $product->user_id)->get()->toArray();
+
         Order::create([
             'user_id'       => $userId,
             'to_user_id'    => $product->user_id,
             'product_id'    => $product->id,
             'name'          => $product->name,
             'description'   => $product->description,
-            'price'         => ($product->price * $product->quantity),
+            'price'         => ($product->price * $request->input('quantity')),
             'quantity'      => $request->input('quantity'),
             'validated'     =>  "false"
         ]);
         $newQuantity = $product->quantity - $request->input('quantity');
         $product->update(['quantity' => $newQuantity]);
 
-        Mail::send('mailOrder', [
-            'name'      => $request->get('name'),
-            'email'     =>'$email[0][\'email\']',
-            'subject'   => 'nouvelle commande sur Maskattack',
-            'user_message'=> 'vous avez une nouvelle commande sur Maskattack merci de vous connecter pour valider',
-        ], function ($message) use ($email){
 
-            $message->from('info@maskattack.be');
-            $message->to( $email[0]['email']);
-        });
 
         if($product->quantity == 0){
             $product->update(['disponibility' => 0]);
-            return redirect()->route('admin.products.index');
+            return redirect()->back()->with('success', 'Produit ajouter au panier');
         }
 
         return redirect()->back()->with('success', 'Produit ajouter au panier');
@@ -181,7 +175,7 @@ class ProductController extends Controller
     {
 
         $userId= Auth::user()->id;
-        $products = Product::where('user_id', $userId)->where('disponibilty', 1)->get();
+        $products = Product::where('user_id', $userId)->get();
 
 
         return view('products.myProducts',compact('products'));

@@ -83,9 +83,9 @@
                                 @endforeach
                             </td>
                             <td>
-                                @if($product->photo)
-                                    <a href="{{ $product->photo->getUrl() }}" target="_blank">
-                                        <img src="{{ $product->photo->getUrl('thumb') }}" width="50px" height="50px">
+                                @if($product->image)
+
+                                        <img src="../{{ $product->image }}" width="50px" height="50px">
                                     </a>
                                 @endif
                             </td>

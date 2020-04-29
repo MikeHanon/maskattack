@@ -219,11 +219,11 @@ table.dataTable thead .sorting_desc {
 .NavLink{
     color: #142740;
     font-family: Nunito, sans-serif;
-    font-size: 30px;
+    font-size:18px;
 }
 .NavContent li{
     list-style: none;
-    margin-left: 50px;
+    margin-left: 44px;
 }
 .NavContent ul li{
     display: inline;
@@ -372,7 +372,7 @@ html, body {
     margin-left:3%;
 }
 .logoMask{
-    width: 100%;
+    width: 80%;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
