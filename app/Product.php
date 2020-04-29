@@ -27,6 +27,8 @@ class Product extends Model implements HasMedia
 
     protected $fillable = [
         'user_id',
+        'user_name',
+        'ville',
         'name',
         'price',
         'quantity',
@@ -34,7 +36,8 @@ class Product extends Model implements HasMedia
         'updated_at',
         'deleted_at',
         'description',
-        'disponibility'
+        'disponibility',
+        'image'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -59,6 +62,11 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsToMany(ProductTag::class);
 
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function getPhotoAttribute()

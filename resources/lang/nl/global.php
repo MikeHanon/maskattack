@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'confirm'                              => 'confirmer la',
+    'order'                                => 'order',
+    'profile'                              => 'profiel',
+    'tuto'                                 => 'Aanwijziging',
+    'about'                                =>'',
     'contact_success'                      => 'Bericht verstuurd',
     'contact_us'                           => 'Contacteer Ons',
     'username'                             => 'Gebruikersnaam',

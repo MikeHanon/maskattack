@@ -43,13 +43,14 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
-        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::all()->pluck('title', 'id');
+
+
+        $metaUser = MetaUser::where('user_id', Auth::user()->id)->get();
         $user->load('metaUser');
         $user->load('roles');
 
-        return view('users.edit', compact('roles', 'user', 'metaUser'));
+        return view('users.edit', compact('user', 'metaUser'));
     }
 
     public function update(UpdateUserRequest $request, User $user)

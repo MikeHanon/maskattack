@@ -48,20 +48,25 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+
         $userId = Auth::user()->id;
-       $data = $request->request->add(['user_id' => $userId]);
+        $userName = Auth::user()->name;
+        $imageName = time().'.'.$request->images->extension();
+       $data = $request->request->add([
+           'user_id' => $userId,
+           'image' => 'images/product/'.$imageName,
+           'user_name' => $userName,
+           ]);
+
+
+
+
+        $request->images->move(public_path('images/product'), $imageName);
 
         $product = Product::create($request->all());
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
 
-        if ($request->input('photo', false)) {
-            $product->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
-        }
-
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $product->id]);
-        }
 
         return redirect()->route('admin.products.index');
 

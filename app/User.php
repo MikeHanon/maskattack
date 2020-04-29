@@ -145,4 +145,9 @@ class User extends Authenticatable
         return $this->hasOne('App\MetaUser');
     }
 
+    public function hasProduct()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

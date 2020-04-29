@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\faq;
+namespace App\Http\Controllers;
 
 use App\FaqCategory;
 use App\FaqQuestion;

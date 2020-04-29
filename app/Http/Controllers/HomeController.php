@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return redirect()->route('product.products.index');
     }
+
+    public function aboutUs()
+    {
+        return view('about');
+    }
+    public function tuto()
+    {
+        return view('tuto');
+    }
 }

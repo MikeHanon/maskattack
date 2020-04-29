@@ -14,6 +14,6 @@ class Order extends Model
         'description',
         'price',
         'quantity',
-        'validate',
+        'validated',
     ];
 }

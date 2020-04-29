@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'confirm'                              => 'confirm',
+    'order'                                => 'order',
+    'profile'                              => 'profile',
+    'tuto'                                 => 'Tutoriak',
+    'about'                                =>'about-us',
     'contact_success'                      => 'Message send',
     'contact_us'                           => 'Contact Us',
     'username'                             => 'Username',

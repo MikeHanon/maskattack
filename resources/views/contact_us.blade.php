@@ -9,7 +9,7 @@
         {{ Session::get('success') }}
     </div>
     @endif
-    <div class="">
+
     <form method="post" action="contact-us">
         {{csrf_field()}}
                 <div>
@@ -49,7 +49,7 @@
                     @enderror
                 </div>
                 <button type="submit" class="BtnSend">{{ trans('global.send') }}</button>
-        </div>
+
     </form>
     <div class="ContentImg">
         <img src="{{asset('img/contactimg.jpg')}}" alt="StayHome">
